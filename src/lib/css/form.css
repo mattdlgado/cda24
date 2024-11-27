@@ -1,0 +1,29 @@
+.hbspt-form {
+  @apply fixed top-0 left-1/2 -translate-x-1/2 w-full h-full transition duration-1000 bg-blue-100/90 border-2 border-blue-100/50 backdrop-blur rounded-lg p-5 grid place-items-center text-blue-950;
+}
+
+.hbspt-form form {
+  @apply max-w-screen-sm;
+}
+
+fieldset {
+  max-width: initial !important;
+  margin-block-end: 1em !important;
+}
+
+input {
+  width: 100%;
+}
+
+.hs-input {
+  width: 100% !important;
+}
+
+input {
+  @apply bg-transparent border-2 border-blue-950/25 backdrop-blur rounded-lg p-1;
+}
+
+.hs-error-msg,
+.hs_error_rollup {
+  @apply opacity-50;
+}

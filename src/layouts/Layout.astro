@@ -1,50 +1,56 @@
 ---
+import "../lib/css/form.css";
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+    <script
+      is:inline
+      charset="utf-8"
+      type="text/javascript"
+      src="//js.hsforms.net/forms/embed/v2.js"></script>
+  </head>
+  <body
+    class="bg-blue-950 text-white font-sans overflow-x-hidden overflow-y-scroll"
+  >
+    <slot />
+    <script src="../lib/js/main.js"></script>
+  </body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
+  .container {
+    @apply py-10;
+  }
+
+  .calendar > div {
+    box-shadow: 0 0 20px #bfdbfe80;
+  }
+
+  .calendar > div:has(.star-bg) {
+    @apply md:text-8xl;
+  }
+
+  .calendar > div:has(.star-bg):hover .star-bg {
+    @apply rotate-90;
+  }
+
+  .calendar > div:has(.star-icon) {
+    @apply md:text-4xl;
+  }
+
+  .calendar > div:has(.star-icon):hover .star-icon {
+    @apply rotate-45;
+  }
 </style>
