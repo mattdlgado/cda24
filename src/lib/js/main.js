@@ -45,13 +45,18 @@ const createAndShowForm = () => {
 
   // Mostrar el formulario
   const formDiv = document.querySelector(".hbspt-form");
-  if (formDiv) {
+  const btnClose = document.getElementById("close");
+  if (formDiv && btnClose) {
     setTimeout(() => {
       formDiv.classList.add("translate-y-0");
       formDiv.classList.remove("translate-y-[100dvh]");
+      btnClose.classList.add("translate-y-0");
+      btnClose.classList.remove("-translate-y-20");
     }, 100);
   } else {
-    console.error("El elemento .hbspt-form no se encuentra en el DOM");
+    console.error(
+      "El elemento .hbspt-form o el botón de cierre no se encuentra en el DOM"
+    );
   }
 };
 
@@ -106,5 +111,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnIn = document.getElementById("in");
   if (btnIn) {
     btnIn.addEventListener("click", createAndShowForm);
+  }
+
+  // Botón para cerrar el formulario
+  const btnClose = document.getElementById("close");
+  if (btnClose) {
+    btnClose.addEventListener("click", () => {
+      const formDiv = document.querySelector(".hbspt-form");
+      if (formDiv) {
+        btnClose.classList.add("-translate-y-20");
+        btnClose.classList.remove("translate-y-0");
+        formDiv.classList.add("translate-y-[100dvh]");
+        formDiv.classList.remove("translate-y-0");
+      } else {
+        console.error(
+          "El elemento .hbspt-form no se encuentra en el DOM para cerrar"
+        );
+      }
+    });
   }
 });
