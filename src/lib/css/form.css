@@ -1,5 +1,5 @@
 .hbspt-form {
-  @apply fixed z-50 top-0 left-1/2 -translate-x-1/2 w-full h-full transition duration-1000 bg-blue-100/90 border-2 border-blue-100/50 backdrop-blur rounded-lg p-5 flex items-end md:items-center justify-center text-blue-950;
+  @apply fixed z-40 top-0 left-1/2 -translate-x-1/2 w-full h-full transition duration-1000 bg-blue-100/90 border-2 border-blue-100/50 backdrop-blur rounded-lg p-5 flex items-end md:items-center justify-center text-blue-950;
 }
 
 .hbspt-form form {
