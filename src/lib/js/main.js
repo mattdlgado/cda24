@@ -65,47 +65,41 @@ document.addEventListener("DOMContentLoaded", () => {
   const hero = document.querySelector(".hero");
   const calendar = document.querySelector(".calendar");
 
-  if (hero) {
-    gsap.to(hero, {
-      scale: 0.9,
-      scrollTrigger: {
-        trigger: hero,
-        start: "bottom bottom",
-        end: "bottom center",
-        scrub: true,
-      },
-    });
-  }
+  // Definir la fecha de inicio (1 de diciembre)
+  const startDate = new Date();
+  startDate.setMonth(11); // Diciembre es el mes 11 (0-indexado)
+  startDate.setDate(1); // Primer día de diciembre
 
-  if (calendar) {
-    gsap.to(calendar, {
-      y: -40,
-      scrollTrigger: {
-        trigger: calendar,
-        start: "top bottom",
-        end: "bottom bottom",
-        scrub: true,
-      },
-    });
-  }
-
-  // Manejo de eventos para los días del calendario
-  const btnForm = document.querySelectorAll(".calendar > div");
   const today = new Date();
-  const currentDay = today.getDate(); // Día dinámico actual
 
-  btnForm.forEach((dayElement) => {
-    dayElement.addEventListener("click", () => {
-      const dayValue = parseInt(dayElement.getAttribute("data-day"));
-
-      if (dayValue > currentDay) {
-        inputValue = "soon";
-      } else {
-        inputValue = dayValue;
-        createAndShowForm();
-      }
+  if (today < startDate) {
+    // Si la fecha actual es anterior al 1 de diciembre, deshabilitar la interacción
+    const btnForm = document.querySelectorAll(".calendar > div");
+    btnForm.forEach((dayElement) => {
+      dayElement.classList.add("disabled");
+      dayElement.addEventListener("click", (e) => {
+        e.preventDefault(); // Prevenir el evento de clic
+      });
     });
-  });
+    console.log("El formulario no está accesible hasta el 1 de diciembre.");
+  } else {
+    // Manejo de eventos para los días del calendario
+    const btnForm = document.querySelectorAll(".calendar > div");
+    const currentDay = today.getDate(); // Día dinámico actual
+
+    btnForm.forEach((dayElement) => {
+      dayElement.addEventListener("click", () => {
+        const dayValue = parseInt(dayElement.getAttribute("data-day"));
+
+        if (dayValue > currentDay) {
+          inputValue = "soon";
+        } else {
+          inputValue = dayValue;
+          createAndShowForm();
+        }
+      });
+    });
+  }
 
   // Botón adicional para mostrar formulario
   const btnIn = document.getElementById("in");
