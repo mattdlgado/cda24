@@ -8,10 +8,24 @@ import Logo from "../components/Logo.astro";
 >
   <Logo />
   <div
-    class="absolute z-50 bottom-1/2 sm:bottom-[20%] md:bottom-[25%] left-1/2 -translate-x-1/2 flex flex-col items-center justify-center"
+    class="absolute z-50 bottom-1/2 top-64 md:top-[initial] md:bottom-[20%] left-1/2 -translate-x-1/2 w-full flex flex-col items-center justify-center text-center"
   >
     <h1 class="font-serif text-6xl sm:text-9xl">Advent</h1>
-    <p class="mb-4">Calendario de adviento</p>
+    <div class="max-w-screen-sm p-5">
+      <p class="mb-4">
+        <strong
+          >Descubre el IMMUNEadvent: 24 ventanas hacia la tecnología</strong
+        >
+      </p>
+      <p class="mb-4">
+        Cada día de diciembre abre una nueva ventana a retos, recursos y
+        sorpresas tech para inspirarte y desarrollar tus habilidades.
+      </p>
+      <p>
+        ¡Apúntate y vive 24 días de aprendizaje, comunidad y diversión
+        tecnológica!
+      </p>
+    </div>
     <button
       id="in"
       class="border-2 border-blue-100/50 backdrop-blur rounded py-1 px-2 text-xl transition hover:scale-105"
