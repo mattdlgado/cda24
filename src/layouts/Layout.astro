@@ -1,25 +1,30 @@
 ---
+import SEO from "../components/SEO.astro";
 import "../lib/css/form.css";
 
 interface Props {
   title: string;
+  description: string;
+  keywords: string;
+  canonical: string;
+  robots: string;
+  img: string;
 }
 
-const { title } = Astro.props;
+const { title, description, keywords, canonical, robots, img } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Descubre el IMMUNEadvent: 24 ventanas hacia la tecnología. Cada día de diciembre abre una nueva ventana a retos, recursos y sorpresas tech para inspirarte y desarrollar tus habilidades. ¡Apúntate y vive 24 días de aprendizaje, comunidad y diversión tecnológica!"
+    <SEO
+      title={title}
+      description={description}
+      keywords={keywords}
+      canonical={canonical}
+      robots={robots}
+      img={img}
     />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <title>{title}</title>
-    <meta name="robots" content="nofollow, noindex" />
     <script
       is:inline
       charset="utf-8"
