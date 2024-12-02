@@ -6,10 +6,35 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 // Inicialización de Lenis para scroll suave
-const lenis = new Lenis();
+const lenis = new Lenis({
+  duration: 1.2, // Duración de la animación (segundos)
+  easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Función de easing
+  smoothWheel: true, // Suaviza el scroll con la rueda del ratón
+  smoothTouch: false, // Habilitar/deshabilitar el scroll suave con touch
+});
+
+// Vincular Lenis con ScrollTrigger
 lenis.on("scroll", ScrollTrigger.update);
 gsap.ticker.add((time) => lenis.raf(time * 1000));
 gsap.ticker.lagSmoothing(0);
+
+// Manejo de clics en enlaces con href="#id"
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener("click", (event) => {
+    event.preventDefault(); // Prevenir el comportamiento predeterminado
+
+    const targetId = anchor.getAttribute("href").substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      lenis.scrollTo(targetElement, {
+        duration: 1.2, // Tiempo de desplazamiento personalizado (opcional)
+        offset: 0, // Desplazamiento opcional, p. ej., para un encabezado fijo
+        immediate: false, // Hacer el scroll instantáneo si es necesario
+      });
+    }
+  });
+});
 
 let inputValue = null;
 let formCreated = false;
